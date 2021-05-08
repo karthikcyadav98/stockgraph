@@ -1,10 +1,10 @@
 import React from 'react';
-import Stock from './pages/Stock';
+import HighStockChart from './pages/HighStockChart';
 
 const App = () => {
   return (
-    <div style={{ padding: 10 }}>
-      <Stock />
+    <div>
+      <HighStockChart />
     </div>
   );
 };
