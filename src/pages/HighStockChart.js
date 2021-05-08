@@ -39,16 +39,27 @@ const HighStockChart = () => {
         return response.json();
       })
       .then(function (data) {
-        for (var key in data[arrKey]) {
-          stockChartXValuesFunction.push(key);
-          stockChartYValuesFunction.push(Number(data[arrKey][key]['1. open']));
-        }
+        console.log('data.Note');
+        if (data.Note !== undefined) {
+          setState({ loading: false });
+          alert(data.Note);
+        } else {
+          for (var key in data[arrKey]) {
+            stockChartXValuesFunction.push(key);
+            stockChartYValuesFunction.push(
+              Number(data[arrKey][key]['1. open'])
+            );
+          }
 
-        setState({
-          stockChartXValues: stockChartXValuesFunction,
-          stockChartYValues: stockChartYValuesFunction,
-          loading: false,
-        });
+          setState({
+            stockChartXValues: stockChartXValuesFunction,
+            stockChartYValues: stockChartYValuesFunction,
+            loading: false,
+          });
+        }
+      })
+      .catch((e) => {
+        console.log('error', e);
       });
   };
 
